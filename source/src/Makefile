@@ -11,13 +11,13 @@ CFLAGS += -m32
 CFLAGS += -Wno-format-security
 
 # enable executable stack
-# CFLAGS += -z execstack
+CFLAGS += -z execstack
 
 # enable SSP
-CFLAGS += -fstack-protector
+# CFLAGS += -fstack-protector
 
 # disable SSP
-# CFLAGS += -fno-stack-protector
+CFLAGS += -fno-stack-protector
 
 # enable ASLR
 # CFLAGS += -pie -fPIE
@@ -30,9 +30,9 @@ ALL := target
 .PHONY: all
 all: $(ALL)
 
-target: fmtstr.c
+target: target.c
 	$(CC) $(CFLAGS) -o $@ $< $(LDFLAGS) $(LIBS)
-	checksec --file $@
+	checksec --file=target
 
 .PHONY: clean
 clean:

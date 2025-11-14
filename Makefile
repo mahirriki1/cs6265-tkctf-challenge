@@ -28,6 +28,7 @@ exploit:
 	PORT=$(PORT) REMOTE=1 source/exploit.py
 
 test:
+	rm -rf docker/core*
 	@source/test.sh
 
 .PHONY: dist build run submit exploit test help

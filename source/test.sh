@@ -13,7 +13,7 @@ PORT=$(cat PORT)
 PORT=$(($PORT + 1))
 
 echo "[!] launching a docker container"
-docker run -p $PORT:9999 --name $ID --rm -t $NAME &
+docker run --privileged -p $PORT:9999 --name $ID --rm -t $NAME &
 
 while ! nc -z -w5 localhost $PORT; do
     echo  "[!] waiting .."
@@ -22,5 +22,6 @@ done
 
 trap "docker container stop $ID &>/dev/null" EXIT
 
+
 sleep 2
-PORT=$PORT REMOTE=1 source/exploit.py
+source/exploit.py

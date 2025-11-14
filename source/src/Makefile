@@ -30,7 +30,7 @@ ALL := target
 .PHONY: all
 all: $(ALL)
 
-target: target.c
+target: bof.c
 	$(CC) $(CFLAGS) -o $@ $< $(LDFLAGS) $(LIBS)
 	checksec --file $@
 

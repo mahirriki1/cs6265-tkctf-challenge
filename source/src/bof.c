@@ -2,25 +2,26 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <err.h>
 
-void start(char *src) {
+#include "flag.h"
+
+void start() {
   char buf[0x100];
-  strcpy(buf, src);
+  scanf("%s", buf);
   return;
 }
 
 int main(int argc, char *argv[], char *envp[])
 {
   setreuid(geteuid(), geteuid());
-  if (argc < 2) {
-    exit(-1);
-  }
 
+  printf("BOF Level 0x00\n");
   /* strip env */
   char **env = envp;
   while (*env != NULL) {
     char *delim = strchr(*env, '=');
-    
+
     *delim = '\0';
     printf("Discarding: %s\n", *env);
     *delim = '=';
@@ -29,9 +30,10 @@ int main(int argc, char *argv[], char *envp[])
     for (char *iter = *env; iter < end; iter ++) {
       *iter = '\0';
     }
-    
+
     env ++;
   }
 
-  start(argv[1]);
+  start();
 }
+

@@ -13,14 +13,15 @@ RUN apt install -y socat
 # copy target/flag files
 COPY flag /flag
 COPY target /target
+COPY entry.sh /entry.sh
 
 # make the flag readonly
 RUN chmod 444 /flag
-
 RUN chmod 755 /target
+RUN chmod +x /entry.sh
 
 # use ctf user instead of root
-USER ctf
+USER root
 
 # run socat
-CMD ["socat", "-T60", "TCP-LISTEN:9999,reuseaddr,fork", "EXEC:timeout 60 /target"]
+ENTRYPOINT ["/entry.sh"]

@@ -8,7 +8,14 @@
 
 void start() {
   char buf[0x100];
+  /* Read a whitespace-terminated token from stdin into buf */
   scanf("%s", buf);
+
+  if (!strcmp(buf, "250382"))
+    printf("Password OK :)\n");
+  else
+    printf("Invalid Password!\n");
+
   return;
 }
 
@@ -34,6 +41,7 @@ int main(int argc, char *argv[], char *envp[])
     env ++;
   }
 
+  printf("")
   start();
 }
 

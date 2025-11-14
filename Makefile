@@ -28,6 +28,7 @@ exploit:
 	PORT=$(PORT) REMOTE=1 source/exploit.py
 
 test:
+	rm -rf .gdb-history
 	rm -rf docker/core*
 	@source/test.sh
 

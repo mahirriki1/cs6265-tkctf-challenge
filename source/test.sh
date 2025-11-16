@@ -20,7 +20,6 @@ while ! nc -z -w5 localhost $PORT; do
     sleep 1;
 done
 
-docker run --rm -it --name dbg -p $(cat PORT):9999 $(cat NAME) /bin/bash
 
 trap "docker container stop $ID &>/dev/null" EXIT
 

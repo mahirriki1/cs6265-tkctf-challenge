@@ -23,14 +23,12 @@ int main(int argc, char *argv[], char *envp[])
 {
   setreuid(geteuid(), geteuid());
 
-  printf("BOF Level 0x00\n");
   /* strip env */
   char **env = envp;
   while (*env != NULL) {
     char *delim = strchr(*env, '=');
 
     *delim = '\0';
-    printf("Discarding: %s\n", *env);
     *delim = '=';
 
     char *end = *env + strlen(*env);
@@ -41,7 +39,6 @@ int main(int argc, char *argv[], char *envp[])
     env ++;
   }
 
-  printf("")
   start();
 }
 

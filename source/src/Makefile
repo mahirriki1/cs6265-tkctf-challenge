@@ -11,7 +11,7 @@ CFLAGS += -m32
 CFLAGS += -Wno-format-security
 
 # enable executable stack
-CFLAGS += -z execstack
+# CFLAGS += -z execstack
 
 # enable SSP
 # CFLAGS += -fstack-protector

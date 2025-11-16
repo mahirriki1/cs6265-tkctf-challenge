@@ -11,7 +11,7 @@ void print_key(char *input)
   while (1) {
     size_t len = fread(buf, 1, sizeof(buf)-1, fp);
     buf[len] = '\0';
-    printf("%s", buf);
+    printf("%s\n", buf);
     if (len < sizeof(buf)-1)
       break;
   }

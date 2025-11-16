@@ -11,7 +11,7 @@ help:
 	@echo "submit : zip for submission"
 
 dist:
-	(cd source/src; make)
+	(cd source/src; rm -rf target; make)
 	cp -f source/src/target docker/
 
 build:

@@ -7,6 +7,7 @@ void print_key(char *input)
   if (!fp)
     err(1, "Please insert your kflag.ko to get the flag!");
 
+  printf("HELLO PRINT_KEY");
 
   while (1) {
     size_t len = fread(buf, 1, sizeof(buf)-1, fp);
